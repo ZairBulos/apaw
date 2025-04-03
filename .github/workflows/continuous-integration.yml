@@ -1,22 +1,26 @@
 name: CI
 on:
   push:
-    branches: [develop]
+    branches: [ 'main' ]
 jobs:
   devops:
-    name: Test - Unit & Integration & SonarCloud Scan & Slack WebHook
-    runs-on: ubuntu-22.04 # macos-latest macos-11 windows-2019 ubuntu-20.04
+    name: Test - Unit & Integration & SonarCloud Scan
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with: { fetch-depth: 0 }
+        with:
+          fetch-depth: 0
+
       - uses: actions/setup-java@v4
         with:
-          distribution: zulu
-          java-version: 21
+          distribution: 'zulu'
+          java-version: 17
+
       - name: Unit & Integration Tests
-        run: mvn -B verify # -B: --batch-mode
+        run: mvn -B verify
+
       - name: Sonar
-        if: success() # always() failure() success()
+        if: success()
         run: >
           mvn -B verify -DskipTests sonar:sonar
           -Dsonar.projectKey=es.upm.miw:apaw
