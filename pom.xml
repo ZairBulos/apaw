@@ -36,7 +36,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <project.resources.sourceEncoding>UTF-8</project.resources.sourceEncoding>
         <!-- Java -->
-        <maven.compile.source>21</maven.compile.source>
+        <maven.compile.source>17</maven.compile.source>
         <deploy>${project.artifactId}-${project.version}</deploy>
         <!-- Maven -->
         <maven.build.timestamp.format>yyyy-MM-dd HH:mm:ss</maven.build.timestamp.format>
